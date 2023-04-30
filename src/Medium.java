@@ -16,8 +16,8 @@ public class Medium {
     }
     public static void salaryIncrease(Employee[] employer, int percent) {
         for (Employee employee : employer) {
-            employee.setWage(employee.getWage() * (1 +percent / 100));
-            System.out.print(employee.getWage() + " ");
+            employee.setSalary(employee.getSalary() * (1 +percent / 100));
+            System.out.print(employee.getSalary() + " ");
         }
         System.out.println();
     }
@@ -26,9 +26,9 @@ public class Medium {
         for (Employee employee : employer) {
             if (employee.getDepartment() == department) {
                 if (minWage == 0) {
-                    minWage = employer[0].getWage();
-                } else if (minWage > employee.getWage()) {
-                    minWage = employee.getWage();
+                    minWage = employer[0].getSalary();
+                } else if (minWage > employee.getSalary()) {
+                    minWage = employee.getSalary();
                 }
             }
         }
@@ -39,9 +39,9 @@ public class Medium {
         for (Employee employee : employer) {
             if (employee.getDepartment() == department) {
                 if (maxWage == 0) {
-                    maxWage = employer[0].getWage();
-                } else if (maxWage < employee.getWage()) {
-                    maxWage = employee.getWage();
+                    maxWage = employer[0].getSalary();
+                } else if (maxWage < employee.getSalary()) {
+                    maxWage = employee.getSalary();
                 }
             }
         }
@@ -51,7 +51,7 @@ public class Medium {
         int sumWage = 0;
         for (Employee employee : employer) {
             if (employee.getDepartment() == department) {
-                sumWage += employee.getWage();
+                sumWage += employee.getSalary();
             }
         }
         System.out.println(sumWage);
@@ -61,17 +61,21 @@ public class Medium {
         int count = 0;
         for (Employee employee : employer) {
             if (employee.getDepartment() == department) {
-                sumWage += employee.getWage();
+                sumWage += employee.getSalary();
                 count++;
             }
         }
-        System.out.println(sumWage / count);
+        if (count != 0) {
+            System.out.println(sumWage / count);
+        } else {
+            System.out.println(0);
+        }
     }
     public static void salaryIncreaseDepartment(Employee[] employer, int percent, byte department) {
         for (Employee employee : employer) {
             if (employee.getDepartment() == department) {
-                employee.setWage(employee.getWage() * (1 + percent / 100));
-                System.out.print(employee.getWage() + " ");
+                employee.setSalary(employee.getSalary() * (1 + percent / 100));
+                System.out.print(employee.getSalary() + " ");
             }
         }
         System.out.println();
@@ -80,23 +84,23 @@ public class Medium {
         for (int i = 0; i < employer.length; i++) {
             if (employer[i].getDepartment() == department) {
                 System.out.println(employer[i].getId() + "; " + employer[0].getEmployer()[i]
-                        + "; " + employer[i].getWage());
+                        + "; " + employer[i].getSalary());
             }
         }
     }
     public static void lessThan(Employee[] employer, int wage) {
         for (int i = 0; i < employer.length; i++) {
-            if (employer[i].getWage() < wage) {
+            if (employer[i].getSalary() < wage) {
                 System.out.println(employer[i].getId() + "; " + employer[0].getEmployer()[i]
-                        + "; " + employer[i].getWage());
+                        + "; " + employer[i].getSalary());
             }
         }
     }
     public static void moreThan(Employee[] employer, int wage) {
         for (int i = 0; i < employer.length; i++) {
-            if (employer[i].getWage() > wage) {
+            if (employer[i].getSalary() > wage) {
                 System.out.println(employer[i].getId() + "; " + employer[0].getEmployer()[i]
-                        + "; " + employer[i].getWage());
+                        + "; " + employer[i].getSalary());
             }
         }
     }

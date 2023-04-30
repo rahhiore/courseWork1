@@ -19,7 +19,7 @@ public class FillBook {
     public static void getRandomWage(Employee[] employer) {
         Random randNum = new Random();
         for (Employee employee : employer) {
-            employee.setWage(50000 + randNum.nextInt(300000 - 50000));
+            employee.setSalary(50000 + randNum.nextInt(300000 - 50000));
         }
     }
 
