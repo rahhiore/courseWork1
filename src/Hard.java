@@ -1,16 +1,15 @@
 import java.util.Arrays;
-
 public class Hard {
     public static void hard(Employee[] employer) {
         String fullName = "Трофимов Тимофей Даниэльевич";
         int salary = 100000;
         byte department = 3;
         int id = 5;
-        addEmployer(employer, fullName, salary, department);
         delEmployerByID(employer, id);
         delEmployerByFullName(employer, "Беляев Леонид Владимирович");
-        changeSalary(employer, "Кузнецов Андрей Даниэльевич");
-        changeDepartment(employer, "Кузнецов Андрей Даниэльевич");
+        addEmployer(employer, fullName, salary, department);
+        changeSalary(employer, "Кузнецов Андрей Даниэльевич", salary);
+        changeDepartment(employer, "Кузнецов Андрей Даниэльевич", department);
         employersList(employer);
     }
     public static void addEmployer(Employee[] employer, String fullName, int salary, byte department) {
@@ -28,7 +27,7 @@ public class Hard {
         }
         employer[0].setEmployer(temp);
         if (!check) {
-            System.out.println("Штат переполнен");
+            System.out.println("Штат заполнен, новый сотрудник не был добавлен");
         }
     }
     public static void delEmployerByID(Employee[] employer, int id) {
@@ -37,6 +36,7 @@ public class Hard {
         employer[id -1].setSalary(0);
         employer[id -1].setDepartment((byte) 0);
         employer[0].setEmployer(temp);
+        System.out.println("Сотрудник успешно удален");
     }
     public static void delEmployerByFullName(Employee[] employer, String fullName) {
         String[] temp = employer[0].getEmployer();
@@ -48,24 +48,27 @@ public class Hard {
             employer[index].setSalary(0);
             employer[index].setDepartment((byte) 0);
             employer[index].setEmployer(temp);
+            System.out.println("Сотрудник успешно удален");
         }
     }
-    public static void changeSalary(Employee[] employer, String fullName) {
+    public static void changeSalary(Employee[] employer, String fullName, int salary) {
         String[] temp = employer[0].getEmployer();
         int index = Arrays.asList(temp).indexOf(fullName);
         if (index == -1) {
             System.out.println("Не правильно введены ФИО");
         } else {
-            employer[index].setSalary(0);
+            employer[index].setSalary(salary);
+            System.out.println("Зарплата успешно изменена");
         }
     }
-    public static void changeDepartment(Employee[] employer, String fullName) {
+    public static void changeDepartment(Employee[] employer, String fullName, byte department) {
         String[] temp = employer[0].getEmployer();
         int index = Arrays.asList(temp).indexOf(fullName);
         if (index == -1) {
             System.out.println("Не правильно введены ФИО");
         } else {
-            employer[index].setDepartment((byte) 0);
+            employer[index].setDepartment(department);
+            System.out.println("Отдел успешно изменен");
         }
     }
     public static void employersList(Employee[] employer) {
@@ -75,7 +78,6 @@ public class Hard {
                 if ((byte)i == employer[j].getDepartment()) {
                     System.out.println(employer[j].getDepartment() + ", " + employer[0].getEmployer()[j] + ";");
                 }
-
             }
             System.out.println();
         }
