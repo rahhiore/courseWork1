@@ -153,7 +153,7 @@ public class Main {
                 break;
             case 16:
                 System.out.println("Введите ФИО, зарплату и отдел сотрудника, для внесения его в базу данных");
-                Hard.addEmployer(employees, sc.nextLine(), sc.nextInt(), sc.nextByte());
+                Hard.addEmployer(employees, sc.next(), sc.nextInt(), sc.nextByte());
                 break;
             case 17:
                 System.out.println("Введите ID, для удаление сотрудника из базы данных");
@@ -165,11 +165,11 @@ public class Main {
                 break;
             case 19:
                 System.out.println("Введите ФИО и зарплату, для изменения зарплаты сотрудника");
-                Hard.changeSalary(employees, sc.nextLine(), sc.nextInt());
+                Hard.changeSalary(employees, sc.next(), sc.nextInt());
                 break;
             case 20:
                 System.out.println("Введите ФИО и отдел, для изменения отдела сотрудника");
-                Hard.changeDepartment(employees, sc.nextLine(), sc.nextByte());
+                Hard.changeDepartment(employees, sc.next(), sc.nextByte());
                 break;
             case 21:
                 Hard.employersList(employees);
