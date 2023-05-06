@@ -15,20 +15,20 @@ public class Medium {
         moreThan(employer, wage);
     }
     public static void salaryIncrease(Employee[] employer, int percent) {
-        for (Employee employee : employer) {
-            employee.setWage(employee.getWage() * (1 +percent / 100));
-            System.out.print(employee.getWage() + " ");
+        for (int i = 0; i < Employee.counter; i++) {
+            employer[i].setSalary(employer[i].getSalary() * (1 +percent / 100));
+            System.out.print(employer[i].getSalary() + " ");
         }
         System.out.println();
     }
     public static void minWage(Employee[] employer, byte department) {
         int minWage = 0;
-        for (Employee employee : employer) {
-            if (employee.getDepartment() == department) {
+        for (int i = 0; i < Employee.counter; i++) {
+            if (employer[i].getDepartment() == department) {
                 if (minWage == 0) {
-                    minWage = employer[0].getWage();
-                } else if (minWage > employee.getWage()) {
-                    minWage = employee.getWage();
+                    minWage = employer[0].getSalary();
+                } else if (minWage > employer[i].getSalary()) {
+                    minWage = employer[i].getSalary();
                 }
             }
         }
@@ -36,12 +36,12 @@ public class Medium {
     }
     public static void maxWage(Employee[] employer, byte department) {
         int maxWage = 0;
-        for (Employee employee : employer) {
-            if (employee.getDepartment() == department) {
+        for (int i = 0; i < Employee.counter; i++) {
+            if (employer[i].getDepartment() == department) {
                 if (maxWage == 0) {
-                    maxWage = employer[0].getWage();
-                } else if (maxWage < employee.getWage()) {
-                    maxWage = employee.getWage();
+                    maxWage = employer[0].getSalary();
+                } else if (maxWage < employer[i].getSalary()) {
+                    maxWage = employer[i].getSalary();
                 }
             }
         }
@@ -49,9 +49,9 @@ public class Medium {
     }
     public static void costAllWage(Employee[] employer, byte department) {
         int sumWage = 0;
-        for (Employee employee : employer) {
-            if (employee.getDepartment() == department) {
-                sumWage += employee.getWage();
+        for (int i = 0; i < Employee.counter; i++) {
+            if (employer[i].getDepartment() == department) {
+                sumWage += employer[i].getSalary();
             }
         }
         System.out.println(sumWage);
@@ -59,44 +59,48 @@ public class Medium {
     public static void averageWage(Employee[] employer, byte department) {
         int sumWage = 0;
         int count = 0;
-        for (Employee employee : employer) {
-            if (employee.getDepartment() == department) {
-                sumWage += employee.getWage();
+        for (int i = 0; i < Employee.counter; i++) {
+            if (employer[i].getDepartment() == department) {
+                sumWage += employer[i].getSalary();
                 count++;
             }
         }
-        System.out.println(sumWage / count);
+        if (count != 0) {
+            System.out.println(sumWage / count);
+        } else {
+            System.out.println(0);
+        }
     }
     public static void salaryIncreaseDepartment(Employee[] employer, int percent, byte department) {
-        for (Employee employee : employer) {
-            if (employee.getDepartment() == department) {
-                employee.setWage(employee.getWage() * (1 + percent / 100));
-                System.out.print(employee.getWage() + " ");
+        for (int i = 0; i < Employee.counter; i++) {
+            if (employer[i].getDepartment() == department) {
+                employer[i].setSalary(employer[i].getSalary() * (1 + percent / 100));
+                System.out.print(employer[i].getSalary() + " ");
             }
         }
         System.out.println();
     }
     public static void printInfoAboutDepartment(Employee[] employer, byte department) {
-        for (int i = 0; i < employer.length; i++) {
+        for (int i = 0; i < Employee.counter; i++) {
             if (employer[i].getDepartment() == department) {
                 System.out.println(employer[i].getId() + "; " + employer[0].getEmployer()[i]
-                        + "; " + employer[i].getWage());
+                        + "; " + employer[i].getSalary());
             }
         }
     }
     public static void lessThan(Employee[] employer, int wage) {
-        for (int i = 0; i < employer.length; i++) {
-            if (employer[i].getWage() < wage) {
+        for (int i = 0; i < Employee.counter; i++) {
+            if (employer[i].getSalary() < wage) {
                 System.out.println(employer[i].getId() + "; " + employer[0].getEmployer()[i]
-                        + "; " + employer[i].getWage());
+                        + "; " + employer[i].getSalary());
             }
         }
     }
     public static void moreThan(Employee[] employer, int wage) {
-        for (int i = 0; i < employer.length; i++) {
-            if (employer[i].getWage() > wage) {
+        for (int i = 0; i < Employee.counter; i++) {
+            if (employer[i].getSalary() > wage) {
                 System.out.println(employer[i].getId() + "; " + employer[0].getEmployer()[i]
-                        + "; " + employer[i].getWage());
+                        + "; " + employer[i].getSalary());
             }
         }
     }
