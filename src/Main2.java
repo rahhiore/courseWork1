@@ -7,6 +7,6 @@ public class Main2 {
 
         quest.setPriv(5);
         System.out.println(quest.getPriv());
-        PalindromeChecker.isPalindrome("qwewq");
+        System.out.println(PalindromeChecker.isPalindrome("weew"));
     }
 }
